@@ -8,7 +8,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Moon, Sun } from "lucide-react";
 
-const ToggleButton = () => {
+const ToggleTheme = () => {
   const { setTheme } = useTheme();
 
   return (
@@ -35,4 +35,4 @@ const ToggleButton = () => {
   );
 };
 
-export default ToggleButton;
+export default ToggleTheme;
