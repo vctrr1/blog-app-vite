@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { LogIn, LogOut } from "lucide-react";
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -78,12 +79,14 @@ const NavBar = () => {
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem disabled>{displayName}</DropdownMenuItem>
                   <DropdownMenuItem>
+                    <LogOut />
                     <button onClick={signOut}>Sair</button>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
               <Button variant="outline" onClick={signInWithGitHub}>
+                <LogIn />
                 Entrar
               </Button>
             )}
