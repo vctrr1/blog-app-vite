@@ -2,20 +2,15 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import ToggleTheme from "./toggle-theme";
 import { useAuth } from "@/hooks/use-auth";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+
 import { Button } from "./ui/button";
-import { LogIn, LogOut } from "lucide-react";
+import { LogIn } from "lucide-react";
+import UserAccountIcon from "./user-account-icon";
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const { signInWithGitHub, signOut, user } = useAuth();
-  const displayName = user?.user_metadata.user_name;
 
   return (
     <nav className="fixed top-0 w-full z-40  border-b">
@@ -30,7 +25,7 @@ const NavBar = () => {
             <Link
               to={"/"}
               className={`${
-                location.pathname === "/" ? "text-muted-foreground" : ""
+                location.pathname === "/" ? "text-muted-foreground " : ""
               }`}
             >
               Home
@@ -69,21 +64,7 @@ const NavBar = () => {
           {/* desltop auth */}
           <div className="hidden md:flex items-center">
             {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1">
-                  <img
-                    src={user.user_metadata?.avatar_url}
-                    className="w-8 h-8 object-cover rounded-full"
-                  />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem disabled>{displayName}</DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <LogOut />
-                    <button onClick={signOut}>Sair</button>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <UserAccountIcon signOut={signOut} user={user} />
             ) : (
               <Button variant="outline" onClick={signInWithGitHub}>
                 <LogIn />
@@ -93,8 +74,16 @@ const NavBar = () => {
           </div>
 
           {/** Mobile menu button */}
-          <div className="md:hidden gap-8 flex">
+          <div className="md:hidden md:gap-8 gap-4 flex">
             <ToggleTheme />
+            {user ? (
+              <UserAccountIcon signOut={signOut} user={user} />
+            ) : (
+              <Button variant="outline" onClick={signInWithGitHub}>
+                <LogIn />
+                Entrar
+              </Button>
+            )}
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
               className="text-foreground focus:outline-none"
