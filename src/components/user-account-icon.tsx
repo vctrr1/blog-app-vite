@@ -22,7 +22,7 @@ const UserAccountIcon = ({ user, signOut }: UserAccountIconProps) => {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem disabled>
+        <DropdownMenuItem disabled className="justify-center">
           {user?.user_metadata.user_name}
         </DropdownMenuItem>
         <DropdownMenuItem>

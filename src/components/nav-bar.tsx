@@ -13,7 +13,7 @@ const NavBar = () => {
   const { signInWithGitHub, signOut, user } = useAuth();
 
   return (
-    <nav className="fixed top-0 w-full z-40  border-b">
+    <nav className="fixed top-0 w-full z-40  border-b bg-background">
       <div className="max-w-5xl mx-auto px-4">
         <div className=" flex justify-between h-16 items-center">
           <Link to="/" className="font-mono text-xl font-bold">
@@ -121,24 +121,31 @@ const NavBar = () => {
       {menuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 bg-background">
-            <Link to={"/"} className="block px-3 py-2 rounded-md text-base">
+            <Link
+              to={"/"}
+              className="block px-3 py-2 rounded-md text-base"
+              onClick={() => setMenuOpen(false)}
+            >
               Home
             </Link>
             <Link
               to={"/create"}
               className="block px-3 py-2 rounded-md text-base"
+              onClick={() => setMenuOpen(false)}
             >
               Criar Post
             </Link>
             <Link
               to={"/communities"}
               className="block px-3 py-2 rounded-md text-base "
+              onClick={() => setMenuOpen(false)}
             >
               Comunidades
             </Link>
             <Link
               to={"/community/create"}
               className="block px-3 py-2 rounded-md text-base"
+              onClick={() => setMenuOpen(false)}
             >
               Criar Comunidades
             </Link>
