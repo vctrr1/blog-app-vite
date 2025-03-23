@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const CreatePostPage = () => {
+const CreatePost = () => {
   return (
     <div className="w-full h-full flex justify-center">
       <Card className="w-full md:w-[80%] max-w-[700px]">
@@ -26,4 +26,4 @@ const CreatePostPage = () => {
   );
 };
 
-export default CreatePostPage;
+export default CreatePost;
