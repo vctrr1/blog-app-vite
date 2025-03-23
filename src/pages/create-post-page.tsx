@@ -12,7 +12,7 @@ const CreatePostPage = () => {
     <div className="w-full h-full flex justify-center">
       <Card className="w-full md:w-[80%] max-w-[700px]">
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Criar novo post</CardTitle>
+          <CardTitle className="text-2xl">Criar novo post</CardTitle>
           <CardDescription className="text-muted-foreground text-base">
             Compartilhe suas ideias com o mundo. Escreva com autenticidade, seja
             você mesmo e inspire outras pessoas.
