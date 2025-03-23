@@ -1,10 +1,10 @@
-import { Send } from "lucide-react";
+import { Loader2Icon } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { supabase } from "../../supabase-client";
 
@@ -40,9 +40,11 @@ const CreatePostForm = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const formref = useRef<HTMLFormElement>(null);
 
-  const { mutate } = useMutation({
+  const { mutate, isPending, error } = useMutation({
     mutationFn: (data: { post: PostInput; imageFile: File }) => {
+      formref.current?.reset();
       return createPost(data.post, data.imageFile);
     },
   });
@@ -92,10 +94,19 @@ const CreatePostForm = () => {
           />
         </div>
       </div>
-      <Button type="submit" className="w-full rounded-base">
-        Criar Post
-        <Send />
+      <Button
+        type="submit"
+        className="w-full rounded-base"
+        disabled={isPending}
+      >
+        Criar
+        {isPending && <Loader2Icon className="animate-spin" />}
       </Button>
+      {error && (
+        <div className="flex justify-center p-4">
+          <p>Erro ao criar post</p>
+        </div>
+      )}
     </form>
   );
 };
