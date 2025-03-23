@@ -62,7 +62,7 @@ const CreatePostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} ref={formref}>
       <div className="flex flex-col gap-4 mb-7">
         <div className="grid w-full items-center gap-1.5">
           <Label htmlFor="title">Titulo:</Label>
