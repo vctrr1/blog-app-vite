@@ -13,6 +13,7 @@ interface PostInput {
   title: string;
   content: string;
   avatar_url: string | null;
+  user_name: string;
 }
 
 const createPost = async (post: PostInput, imageFile: File) => {
@@ -60,6 +61,7 @@ const CreatePostForm = () => {
         title,
         content,
         avatar_url: user?.user_metadata.avatar_url || null,
+        user_name: user?.user_metadata.user_name,
       },
       imageFile: selectedFile,
     });
