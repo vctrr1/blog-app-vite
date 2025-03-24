@@ -10,7 +10,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="min-h-screen pt-20">
         <NavBar />
-        <div className="container mx-auto px-5 py-5">
+        <div className="px-5 py-5 container mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/create" element={<CreatePost />} />
