@@ -51,7 +51,7 @@ const PostListComponent = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 ">
       {data?.map((post) => (
         <Card className="w-full" key={post.id}>
-          <Link to="/create" key={post.id} className="block">
+          <Link to={`/post/${post.id}`} key={post.id} className="block">
             <CardHeader className="text-center gap-3">
               <CardTitle>{post.title}</CardTitle>
               <div className="flex-1">
