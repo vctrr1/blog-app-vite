@@ -7,10 +7,12 @@ import { Textarea } from "./ui/textarea";
 import React, { ChangeEvent, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { supabase } from "../../supabase-client";
+import { useAuth } from "@/hooks/use-auth";
 
 interface PostInput {
   title: string;
   content: string;
+  avatar_url: string | null;
 }
 
 const createPost = async (post: PostInput, imageFile: File) => {
@@ -41,6 +43,7 @@ const CreatePostForm = () => {
   const [content, setContent] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const formref = useRef<HTMLFormElement>(null);
+  const { user } = useAuth();
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: (data: { post: PostInput; imageFile: File }) => {
@@ -52,7 +55,14 @@ const CreatePostForm = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!selectedFile) return;
-    mutate({ post: { title, content }, imageFile: selectedFile });
+    mutate({
+      post: {
+        title,
+        content,
+        avatar_url: user?.user_metadata.avatar_url || null,
+      },
+      imageFile: selectedFile,
+    });
   };
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
