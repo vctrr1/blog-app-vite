@@ -99,6 +99,7 @@ export const LikeDislikeButton = ({ postId }: Props) => {
   return (
     <div className="flex justify-evenly w-full">
       <Button
+        disabled={!user?.id}
         variant="ghost"
         onClick={() => mutate(1)}
         className={`${userVote === 1 ? "text-green-500" : ""}`}
@@ -107,6 +108,7 @@ export const LikeDislikeButton = ({ postId }: Props) => {
         {likes}
       </Button>
       <Button
+        disabled={!user?.id}
         variant="ghost"
         onClick={() => mutate(-1)}
         className={`${userVote! < 0 ? "text-red-500" : ""}`}
