@@ -9,6 +9,7 @@ import {
 } from "./ui/card";
 import { Link } from "react-router";
 import LikeDislikeButton from "./like-dislike-button";
+import { Loader2Icon } from "lucide-react";
 
 interface Post {
   id: number;
@@ -40,7 +41,11 @@ const PostListComponent = () => {
   });
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return (
+      <div className="w-full flex min-h-screen justify-center items-center">
+        <Loader2Icon className="animate-spin" />
+      </div>
+    );
   }
   if (error) {
     return <div>Erro: {error.message}</div>;
