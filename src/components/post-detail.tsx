@@ -3,6 +3,7 @@ import { supabase } from "../../supabase-client";
 import { format } from "date-fns";
 import LikeDislikeButton from "./like-dislike-button";
 import { Separator } from "./ui/separator";
+import CommentSection from "./comment-section";
 
 interface PostDetailProps {
   id: number;
@@ -66,6 +67,12 @@ const PostDetail = ({ id }: PostDetailProps) => {
       />
       <LikeDislikeButton postId={data!.id} />
       <Separator className="m-5" />
+      <p className="">{data?.content}</p>
+      <Separator className="m-6" />
+      <div className="flex flex-col items-start w-full gap-4 mb-6">
+        <h3 className="text-xl">Comentários</h3>
+        <CommentSection postId={data!.id} />
+      </div>
     </div>
   );
 };
