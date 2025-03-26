@@ -42,7 +42,7 @@ const PostListComponent = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full flex min-h-screen justify-center items-center">
+      <div className="w-full flex h-full justify-center items-center">
         <Loader2Icon className="animate-spin" />
       </div>
     );
