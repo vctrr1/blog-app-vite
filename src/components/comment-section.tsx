@@ -155,7 +155,7 @@ const CommentSection = ({ postId }: CommentSectionProp) => {
         </form>
       </div>
       {/**Comentarios */}
-      <div className="mt-3">
+      <div className="mt-3 space-y-3">
         {/**faz um loop no array de comentarios */}
         {commentTree.map((comment, key) => (
           <CommentItem key={key} postId={postId} comment={comment} />
