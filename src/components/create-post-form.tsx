@@ -116,7 +116,7 @@ const CreatePostForm = () => {
       </Button>
       {error && (
         <div className="flex justify-center p-4">
-          <p>Erro ao criar post</p>
+          <p>Erro ao criar post, usuario precisa estar logado</p>
         </div>
       )}
     </form>
