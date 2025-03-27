@@ -17,7 +17,7 @@ const NavBar = () => {
       <div className="max-w-5xl mx-auto px-4">
         <div className=" flex justify-between h-16 items-center">
           <Link to="/" className="font-mono text-xl font-bold">
-            blog<span className="text-purple-500">.app</span>
+            blog<span className="text-green-500">.app</span>
           </Link>
 
           {/** Desktop links */}
