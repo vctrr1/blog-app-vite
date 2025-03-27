@@ -1,7 +1,10 @@
+import CommunitiesList from "@/components/communities-list";
+
 const CommunitiesPage = () => {
   return (
     <div>
-      <div>Test2</div>
+      <h1>Todas as comunidades</h1>
+      <CommunitiesList />
     </div>
   );
 };
