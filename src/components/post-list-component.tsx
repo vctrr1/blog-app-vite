@@ -8,8 +8,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Link } from "react-router";
-import LikeDislikeButton from "./like-dislike-button";
-import { Loader2Icon } from "lucide-react";
+import { Heart, Loader2Icon, MessageCircleMore } from "lucide-react";
 
 interface Post {
   id: number;
@@ -19,13 +18,12 @@ interface Post {
   image_url: string;
   avatar_url: string;
   user_name: string;
+  like_count?: number;
+  comment_count?: number;
 }
 
 const fetchPosts = async (): Promise<Post[]> => {
-  const { data, error } = await supabase
-    .from("post")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const { data, error } = await supabase.rpc("get_posts_with_counts");
 
   if (error) {
     throw new Error(error.message);
@@ -85,8 +83,15 @@ const PostListComponent = () => {
             <CardContent className="flex-auto flex flex-col">
               <p className="line-clamp-3">{post.content}</p>
             </CardContent>
-            <CardFooter>
-              <LikeDislikeButton postId={post.id} />
+            <CardFooter className=" items-center mt-2">
+              <div className="flex items-center gap-1">
+                <Heart strokeWidth={1.25} size={19} fill="red" />
+                {post.like_count ?? 0}
+              </div>
+              <div className="flex items-center gap-1">
+                <MessageCircleMore strokeWidth={1.25} size={19} />
+                {post.comment_count ?? 0}
+              </div>
             </CardFooter>
           </div>
         </Card>
