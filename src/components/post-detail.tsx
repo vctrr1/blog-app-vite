@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import LikeDislikeButton from "./like-dislike-button";
 import { Separator } from "./ui/separator";
 import CommentSection from "./comment-section";
+import { Loader2Icon } from "lucide-react";
 
 interface PostDetailProps {
   id: number;
@@ -38,7 +39,13 @@ const PostDetail = ({ id }: PostDetailProps) => {
   });
 
   if (error) return <div>{error.message}</div>;
-  if (isLoading) return <div>Carregando...</div>;
+  if (isLoading) {
+    return (
+      <div className="w-full flex justify-center">
+        <Loader2Icon className="animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center w-full h-full">
