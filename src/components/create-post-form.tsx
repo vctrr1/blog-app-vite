@@ -16,6 +16,7 @@ interface PostInput {
   content: string;
   avatar_url: string | null;
   user_name: string;
+  community_id?: number | null;
 }
 
 const createPost = async (post: PostInput, imageFile: File) => {
@@ -53,7 +54,7 @@ const CreatePostForm = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedCommunity, setSelectedCommunity] = useState<string>("");
+  const [selectedCommunity, setSelectedCommunity] = useState<number | null>();
   const formref = useRef<HTMLFormElement>(null);
   const { user } = useAuth();
 
@@ -78,6 +79,7 @@ const CreatePostForm = () => {
         content,
         avatar_url: user?.user_metadata.avatar_url || null,
         user_name: user?.user_metadata.user_name,
+        community_id: selectedCommunity || null,
       },
       imageFile: selectedFile,
     });
@@ -90,7 +92,8 @@ const CreatePostForm = () => {
   };
 
   const handleSelectCommunity = (value: string) => {
-    setSelectedCommunity(value);
+    const numFormated = Number(value);
+    setSelectedCommunity(numFormated);
   };
 
   console.log(selectedCommunity);
