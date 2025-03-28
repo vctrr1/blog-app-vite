@@ -40,7 +40,7 @@ const CommunitiesList = () => {
   return (
     <div>
       {data?.map((community, index) => (
-        <Link to={`community/${community.id}`}>
+        <Link to={`/community/${community.id}`}>
           <Card
             key={index}
             className="mb-4 transition-shadow duration-300 hover:shadow-base hover:shadow-green-300"
