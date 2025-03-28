@@ -52,7 +52,10 @@ const PostListComponent = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4 ">
       {data?.map((post) => (
-        <Card className="w-full" key={post.id}>
+        <Card
+          className="w-full transition-shadow duration-300 hover:shadow-base hover:shadow-green-300"
+          key={post.id}
+        >
           <Link
             to={`/post/${post.id}`}
             key={post.id}
