@@ -16,11 +16,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
     //se deslogar o onAuthStateChange vai rodar e vai setar o  user como null, se logar o user vai ser setado
     // cria um listener para o evento de mudança de autenticação
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
+    const { data: listener } = supabase.auth.onAuthStateChange((_, session) => {
+      setUser(session?.user ?? null);
+    });
 
     // retorna uma função que é chamada quando o componente é desmontado, usamos para desinscrever o listener
     //criado acima para evitar memory leak
