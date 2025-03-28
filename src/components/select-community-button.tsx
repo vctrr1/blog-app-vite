@@ -27,7 +27,7 @@ export function SelectCommunityButton({
         <SelectGroup>
           <SelectLabel>Comunidaes</SelectLabel>
           {communities.map((community) => (
-            <SelectItem key={community.id} value={community.name}>
+            <SelectItem key={community.id} value={String(community.id)}>
               {community.name}
             </SelectItem>
           ))}
