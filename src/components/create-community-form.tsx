@@ -5,9 +5,8 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 
 import React, { useRef, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "../../supabase-client";
-//import { useAuth } from "@/hooks/use-auth";
 import { useNavigate } from "react-router";
 
 interface CommunityInput {
@@ -29,13 +28,15 @@ const CreateCommunityForm = () => {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const formref = useRef<HTMLFormElement>(null);
-  //const { user } = useAuth();
+  const queryClient = useQueryClient();
+
   const navigate = useNavigate();
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: createCommunity,
     onSuccess: () => {
       navigate("/communities");
+      queryClient.invalidateQueries({ queryKey: ["communities"] });
     },
   });
 
