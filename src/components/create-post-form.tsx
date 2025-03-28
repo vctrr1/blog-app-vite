@@ -6,7 +6,7 @@ import { Textarea } from "./ui/textarea";
 
 import React, { ChangeEvent, useRef, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { supabase } from "../../supabase-client";
+import { supabase } from "../supabase-client";
 import { useAuth } from "@/hooks/use-auth";
 import { Community } from "./communities-list";
 import { SelectCommunityButton } from "./select-community-button";

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Heart, Loader2Icon, MessageCircleMore } from "lucide-react";
 import { Link, useParams } from "react-router";
-import { supabase } from "../../supabase-client";
+import { supabase } from "../supabase-client";
 import {
   Card,
   CardContent,

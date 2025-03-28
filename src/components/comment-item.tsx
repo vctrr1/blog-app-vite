@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import { useAuth } from "@/hooks/use-auth";
 import { Textarea } from "./ui/textarea";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "../../supabase-client";
+import { supabase } from "../supabase-client";
 import { Loader2Icon } from "lucide-react";
 
 interface CommentItemProps {

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "../../supabase-client";
+import { supabase } from "../supabase-client";
 import { format } from "date-fns";
 import LikeDislikeButton from "./like-dislike-button";
 import { Separator } from "./ui/separator";

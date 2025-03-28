@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "../../supabase-client";
+import { supabase } from "../supabase-client";
 import { Loader2Icon } from "lucide-react";
 import { Link } from "react-router";
 import { Card, CardContent } from "./ui/card";

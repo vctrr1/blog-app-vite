@@ -6,7 +6,7 @@ import { Textarea } from "./ui/textarea";
 
 import React, { useRef, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "../../supabase-client";
+import { supabase } from "../supabase-client";
 import { useNavigate } from "react-router";
 
 interface CommunityInput {

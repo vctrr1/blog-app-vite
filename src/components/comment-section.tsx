@@ -3,7 +3,7 @@ import { Textarea } from "./ui/textarea";
 import React, { useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { supabase } from "../../supabase-client";
+import { supabase } from "../supabase-client";
 import { Loader2Icon } from "lucide-react";
 import CommentItem from "./comment-item";
 
