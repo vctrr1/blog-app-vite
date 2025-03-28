@@ -5,9 +5,11 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 
 import React, { ChangeEvent, useRef, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { supabase } from "../../supabase-client";
 import { useAuth } from "@/hooks/use-auth";
+import { Community } from "./communities-list";
+import { SelectCommunityButton } from "./select-community-button";
 
 interface PostInput {
   title: string;
@@ -39,12 +41,26 @@ const createPost = async (post: PostInput, imageFile: File) => {
   return data;
 };
 
+const fetchCommunities = async () => {
+  const { data, error } = await supabase.from("communities").select("*");
+
+  if (error) throw new Error(error.message);
+
+  return data;
+};
+
 const CreatePostForm = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedCommunity, setSelectedCommunity] = useState<string>("");
   const formref = useRef<HTMLFormElement>(null);
   const { user } = useAuth();
+
+  const { data: communities } = useQuery<Community[], Error>({
+    queryKey: ["communities"],
+    queryFn: fetchCommunities,
+  });
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: (data: { post: PostInput; imageFile: File }) => {
@@ -72,6 +88,12 @@ const CreatePostForm = () => {
       setSelectedFile(e.target.files[0]);
     }
   };
+
+  const handleSelectCommunity = (value: string) => {
+    setSelectedCommunity(value);
+  };
+
+  console.log(selectedCommunity);
 
   return (
     <form onSubmit={handleSubmit} ref={formref}>
@@ -103,6 +125,13 @@ const CreatePostForm = () => {
             type="file"
             accept="image/*"
             onChange={handleFileChange}
+          />
+        </div>
+        <div className="grid w-full items-center gap-1.5">
+          <Label>Comunidade:</Label>
+          <SelectCommunityButton
+            onSelectCategory={handleSelectCommunity}
+            communities={communities ?? []}
           />
         </div>
       </div>
