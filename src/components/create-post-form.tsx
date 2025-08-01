@@ -55,6 +55,7 @@ const CreatePostForm = () => {
   const [content, setContent] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedCommunity, setSelectedCommunity] = useState<number | null>();
+  const [successMessage, setSuccessMessage] = useState<string>("");
   const formref = useRef<HTMLFormElement>(null);
   const { user } = useAuth();
 
@@ -67,6 +68,18 @@ const CreatePostForm = () => {
     mutationFn: (data: { post: PostInput; imageFile: File }) => {
       formref.current?.reset();
       return createPost(data.post, data.imageFile);
+    },
+    onSuccess: () => {
+      setSuccessMessage("Post criado com sucesso!");
+      formref.current?.reset();
+      setTitle("");
+      setContent("");
+      setSelectedFile(null);
+      setSelectedCommunity(null);
+
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
     },
   });
 
@@ -147,6 +160,11 @@ const CreatePostForm = () => {
       {error && (
         <div className="flex justify-center p-4">
           <p>Erro ao criar post, usuario precisa estar logado</p>
+        </div>
+      )}
+      {successMessage && (
+        <div className="flex justify-center p-4 text-green-600 bg-green-100 border border-green-300 rounded-md mb-4">
+          <p>{successMessage}</p>
         </div>
       )}
     </form>
