@@ -163,7 +163,7 @@ const CreatePostForm = () => {
         </div>
       )}
       {successMessage && (
-        <div className="flex justify-center p-4 text-green-600 bg-green-100 border border-green-300 rounded-md mb-4">
+        <div className="flex justify-center p-4">
           <p>{successMessage}</p>
         </div>
       )}
