@@ -23,7 +23,7 @@ interface Post {
 }
 
 const fetchPosts = async (): Promise<Post[]> => {
-  const { data, error } = await supabase.rpc("get_posts_with_counts");
+  const { data, error } = await supabase.rpc("get_posts_with_count");
 
   if (error) {
     throw new Error(error.message);

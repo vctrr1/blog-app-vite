@@ -96,8 +96,6 @@ const CreatePostForm = () => {
     setSelectedCommunity(numFormated);
   };
 
-  console.log(selectedCommunity);
-
   return (
     <form onSubmit={handleSubmit} ref={formref}>
       <div className="flex flex-col gap-4 mb-7">

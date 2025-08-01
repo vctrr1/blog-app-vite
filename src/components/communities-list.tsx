@@ -49,7 +49,7 @@ const CommunitiesList = () => {
               <div className="text-center text-lg font-semibold">
                 {community.name}
               </div>
-              <div className="line-clamp-2 text-muted-foreground">
+              <div className="line-clamp-2 text-muted-foreground text-center">
                 {community.description}
               </div>
             </CardContent>
