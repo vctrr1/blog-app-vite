@@ -1,54 +1,67 @@
-# React + TypeScript + Vite
+# Blog.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Blog.app é uma aplicação de rede social desenvolvida com React, TypeScript e Vite, que permite aos usuários criar posts, comentar, curtir/descurtir e interagir em comunidades. O projeto utiliza Supabase como backend para autenticação, banco de dados e armazenamento de imagens.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Autenticação via GitHub (OAuth)
+- Criação, listagem e visualização de posts com upload de imagens
+- Curtidas e descurtidas em posts
+- Sistema de comentários e respostas em árvore (threaded)
+- Criação e listagem de comunidades
+- Filtro de posts por comunidade
+- Alternância de tema (claro/escuro/sistema)
+- Interface responsiva e moderna com Tailwind CSS
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Supabase](https://supabase.com/)
+- [React Router](https://reactrouter.com/)
+- [@tanstack/react-query](https://tanstack.com/query/latest)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- [Lucide Icons](https://lucide.dev/)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Como rodar o projeto
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Clone o repositório:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```sh
+   git clone https://github.com/seu-usuario/blog-app.git
+   cd blog-app
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+   ```
+
+2. **Instale as dependências:**
+
+   ```sh
+   npm install
+
+   ```
+
+3. **Configure as variáveis de ambiente:**
+   Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
+
+   ```sh
+    VITE_SUPABASE_URL=SuaURLDoSupabase
+    VITE_SUPABASE_ANON_KEY=SuaAnonKeyDoSupabase
+
+   ```
+
+4. **Inicie o servidor de desenvolvimento:**
+
+   ```sh
+   npm run dev
+
+   ```
+
+5. **Acesse no navegador:**
+
+   Abra http://localhost:5173
+
+## 📊 Pagina Inicial
+
+![Página inicial da aplicação](public/screenshot/homepage.png)
