@@ -10,7 +10,6 @@ Blog.app é uma aplicação de rede social desenvolvida com React, TypeScript e 
 - Sistema de comentários e respostas em árvore (threaded)
 - Criação e listagem de comunidades
 - Filtro de posts por comunidade
-- Alternância de tema (claro/escuro/sistema)
 - Interface responsiva e moderna com Tailwind CSS
 
 ## Tecnologias Utilizadas
@@ -30,7 +29,7 @@ Blog.app é uma aplicação de rede social desenvolvida com React, TypeScript e 
 1. **Clone o repositório:**
 
    ```sh
-   git clone https://github.com/seu-usuario/blog-app.git
+   git clone https://github.com/vctrr1/blog-app-vite.git
    cd blog-app
 
    ```
