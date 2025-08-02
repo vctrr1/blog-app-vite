@@ -11,6 +11,7 @@ Blog.app é uma aplicação de rede social desenvolvida com React, TypeScript e 
 - Criação e listagem de comunidades
 - Filtro de posts por comunidade
 - Interface responsiva e moderna com Tailwind CSS
+- Theme switching
 
 ## Tecnologias Utilizadas
 
